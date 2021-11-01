@@ -12,6 +12,11 @@ public class PlayerMove : MonoBehaviour
     public Sprite SLeft;
     public Sprite SRight;
 
+    public Sprite SAUp;
+    public Sprite SADown;
+    public Sprite SALeft;
+    public Sprite SARight;
+
     public Vector3 raycastOffset = Vector3.zero;
     public float raycastDistance = 1.0f;
     
@@ -19,10 +24,11 @@ public class PlayerMove : MonoBehaviour
     public Direction currentDir = Direction.None;
 
     bool moveLeft, moveRight, moveUp, moveDown;
+    public static int didCollide = 0; 
 
 
     // Start is called before the first frame update
-
+        
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
         
@@ -141,6 +147,18 @@ public class PlayerMove : MonoBehaviour
         return false;
     }
 
+    void OnTriggerEnter2D(Collider2D collision){
+        if(collision.CompareTag("NPC2")){
+            didCollide = 1; 
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision){
+        if(collision.CompareTag("NPC2")){
+            didCollide = 0; 
+        }
+    }
+
     /*private void OnDrawGizmos(){
         switch(currentDir){
             case Direction.Right:
@@ -171,15 +189,35 @@ public class PlayerMove : MonoBehaviour
         KeyBoardInput();
         if(Input.GetKey(KeyCode.LeftArrow)){
             GetComponent<SpriteRenderer>().sprite = SLeft;
+            if(MyAttackTrigger.canAttack == 1){
+                if(Input.GetKey(KeyCode.Space)){
+                    GetComponent<SpriteRenderer>().sprite = SALeft;
+                }
+            }
         }
         if(Input.GetKey(KeyCode.RightArrow)){
             GetComponent<SpriteRenderer>().sprite = SRight;
+            if(MyAttackTrigger.canAttack == 1){
+                if(Input.GetKey(KeyCode.Space)){
+                    GetComponent<SpriteRenderer>().sprite = SARight;
+                }
+            }
         }
         if(Input.GetKey(KeyCode.DownArrow)){
              GetComponent<SpriteRenderer>().sprite = SDown;
+             if(MyAttackTrigger.canAttack == 1){
+                if(Input.GetKey(KeyCode.Space)){
+                    GetComponent<SpriteRenderer>().sprite = SADown;
+                }
+            }
             } 
         if (Input.GetKey(KeyCode.UpArrow)){
                 GetComponent<SpriteRenderer>().sprite = SUp;
+                if(MyAttackTrigger.canAttack == 1){
+                if(Input.GetKey(KeyCode.Space)){
+                    GetComponent<SpriteRenderer>().sprite = SAUp;
+                }
+            }
 
         }
     }
