@@ -2057,6 +2057,7 @@ GameObject:
   - component: {fileID: 702995722}
   - component: {fileID: 702995721}
   - component: {fileID: 702995723}
+  - component: {fileID: 702995724}
   m_Layer: 0
   m_Name: Monster (4)
   m_TagString: Untagged
@@ -2144,6 +2145,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   dir: 0
+--- !u!61 &702995724
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702995720}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 7.96, y: 7.94}
+    newSize: {x: 7.96, y: 7.94}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 7.96, y: 7.94}
+  m_EdgeRadius: 0
 --- !u!1 &748009349
 GameObject:
   m_ObjectHideFlags: 0
@@ -2400,6 +2427,7 @@ GameObject:
   - component: {fileID: 801316154}
   - component: {fileID: 801316153}
   - component: {fileID: 801316155}
+  - component: {fileID: 801316156}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -2487,6 +2515,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   dir: 0
+--- !u!61 &801316156
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801316152}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 7.96, y: 7.94}
+    newSize: {x: 7.96, y: 7.94}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 7.96, y: 7.94}
+  m_EdgeRadius: 0
 --- !u!1 &817721166
 GameObject:
   m_ObjectHideFlags: 0
@@ -2992,7 +3046,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -5217,7 +5271,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
