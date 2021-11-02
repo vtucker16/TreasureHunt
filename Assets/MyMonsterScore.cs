@@ -9,9 +9,6 @@ public class MyMonsterScore : MonoBehaviour
     public TMP_Text myText;  
     public string newText = "Monsters: ";
 
-    public AudioSource myAudioSource;
-    public AudioClip clip;
-
     void Start()
     {
         //myText.text = "This is text";
@@ -20,9 +17,5 @@ public class MyMonsterScore : MonoBehaviour
 
     void Update(){
         myText.text = "Monster: " + monster + "/5";
-
-        if (monster == 5){
-            myAudioSource.PlayOneShot(clip);
-        }
     }
 }
