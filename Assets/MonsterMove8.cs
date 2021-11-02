@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterMove3 : MonoBehaviour
+public class MonsterMove8 : MonoBehaviour
 {
     public float speed = 10.0f;
     public int dir = 0; 
     
     void MoveObject(){
 
-        if(transform.position.x >= 78){
+        if(transform.position.x >= 55){
             dir = 1;
         }
         if(transform.position.x <= 40){
@@ -27,6 +27,7 @@ public class MonsterMove3 : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.CompareTag("Player")){
             if (PlayerMove.didAttack == 1){
+                MyMonsterScore.monster++;
                  Destroy(gameObject);
           }
         }

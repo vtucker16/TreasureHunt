@@ -24,6 +24,14 @@ public class MonsterMove2 : MonoBehaviour
         }
     }
 
+private void OnTriggerEnter2D(Collider2D collision){
+        if(collision.CompareTag("Player")){
+            if (PlayerMove.didAttack == 1){
+                 Destroy(gameObject);
+          }
+        }
+        
+    }
     
 
     // Update is called once per frame

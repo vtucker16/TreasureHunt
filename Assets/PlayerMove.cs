@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -26,11 +27,18 @@ public class PlayerMove : MonoBehaviour
     bool moveLeft, moveRight, moveUp, moveDown;
     public static int didCollide = 0; 
 
+    public static int didAttack = 0;
+
+    public AudioSource myAudioSource;
+    public AudioSource myAudioSource1;
+    public AudioSource myAudioSource2;
+
 
     // Start is called before the first frame update
         
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
+        //audio = GetComponent<AudioSource>();
         
     }
 
@@ -151,13 +159,35 @@ public class PlayerMove : MonoBehaviour
         if(collision.CompareTag("NPC2")){
             didCollide = 1; 
         }
+        if(collision.CompareTag("NPC1")){
+            didCollide = 1;
+        }
+        if(collision.CompareTag("Enemy")){
+            if(didAttack == 0){
+                MyAttackTrigger.canAttack = 0;
+                TreasureCollector.key = 0;
+                MyMonsterScore.monster = 0;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            if(didAttack == 1){
+                myAudioSource1.Play();
+            }
+        }
+        if(collision.CompareTag("Key")){
+            myAudioSource2.Play();
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision){
         if(collision.CompareTag("NPC2")){
             didCollide = 0; 
         }
+        if(collision.CompareTag("NPC1")){
+            didCollide = 0;
+        }
     }
+
+
 
     /*private void OnDrawGizmos(){
         switch(currentDir){
@@ -189,33 +219,61 @@ public class PlayerMove : MonoBehaviour
         KeyBoardInput();
         if(Input.GetKey(KeyCode.LeftArrow)){
             GetComponent<SpriteRenderer>().sprite = SLeft;
+            didAttack = 0;
+            myAudioSource.Stop();
             if(MyAttackTrigger.canAttack == 1){
                 if(Input.GetKey(KeyCode.Space)){
+                    didAttack = 1;
                     GetComponent<SpriteRenderer>().sprite = SALeft;
+                    myAudioSource.Play();
+                }
+                else{
+                    myAudioSource.Stop();
                 }
             }
         }
         if(Input.GetKey(KeyCode.RightArrow)){
             GetComponent<SpriteRenderer>().sprite = SRight;
+            didAttack = 0;
+            myAudioSource.Stop();
             if(MyAttackTrigger.canAttack == 1){
                 if(Input.GetKey(KeyCode.Space)){
+                    didAttack = 1;
                     GetComponent<SpriteRenderer>().sprite = SARight;
+                    myAudioSource.Play();
+                }
+                else{
+                    myAudioSource.Stop();
                 }
             }
         }
         if(Input.GetKey(KeyCode.DownArrow)){
              GetComponent<SpriteRenderer>().sprite = SDown;
+             didAttack = 0;
+             myAudioSource.Stop();
              if(MyAttackTrigger.canAttack == 1){
                 if(Input.GetKey(KeyCode.Space)){
+                    didAttack = 1;
                     GetComponent<SpriteRenderer>().sprite = SADown;
+                    myAudioSource.Play();
+                }
+                else{
+                    myAudioSource.Stop();
                 }
             }
             } 
         if (Input.GetKey(KeyCode.UpArrow)){
                 GetComponent<SpriteRenderer>().sprite = SUp;
+                didAttack = 0;
+                myAudioSource.Stop();
                 if(MyAttackTrigger.canAttack == 1){
                 if(Input.GetKey(KeyCode.Space)){
+                    didAttack = 1;
                     GetComponent<SpriteRenderer>().sprite = SAUp;
+                    myAudioSource.Play();
+                }
+                else{
+                    myAudioSource.Stop();
                 }
             }
 

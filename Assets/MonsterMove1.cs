@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterMove1 : MonoBehaviour
 {
-    public float speed = 8.0f;
+    public float speed = 10.0f;
     public int dir = 0; 
     
     void MoveObject(){
@@ -24,7 +24,14 @@ public class MonsterMove1 : MonoBehaviour
         }
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision){
+        if(collision.CompareTag("Player")){
+            if (PlayerMove.didAttack == 1){
+                 Destroy(gameObject);
+          }
+        }
+        
+    }
 
     // Update is called once per frame
     void Update()
